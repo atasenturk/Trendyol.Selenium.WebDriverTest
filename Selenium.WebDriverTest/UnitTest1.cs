@@ -42,7 +42,7 @@ namespace Selenium.WebDriverTest
             Thread.Sleep(1000);
             driver.FindElement(By.XPath(Utility.RemoveXPath)).Click();
 
-            //bdd
+            //bdd-
         }
 
         private static Random random = new Random();
