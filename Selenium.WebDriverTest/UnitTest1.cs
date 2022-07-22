@@ -24,23 +24,23 @@ namespace Selenium.WebDriverTest
             driver.FindElement(By.ClassName(Utility.ModalClose)).Click();
             Thread.Sleep(1000);
             string searchValue = RandomString();
-            driver.FindElement(By.ClassName("search-box")).SendKeys(searchValue);
+            driver.FindElement(By.ClassName(Utility.SearchBox)).SendKeys(searchValue);
             Thread.Sleep(1000);
-            driver.FindElement(By.ClassName("search-box")).SendKeys(Keys.Enter);
+            driver.FindElement(By.ClassName(Utility.SearchBox)).SendKeys(Keys.Enter);
             Thread.Sleep(1000);
             Random random = new Random();
             int randomProductNumber = random.Next(2, 5);
-            driver.FindElement(By.XPath(".//*[@id='search-app']/div/div[1]/div[2]/div[5]/div/div["+ randomProductNumber + "]/div[1]/a")).Click();
+            driver.FindElement(By.XPath(Utility.GetProductPath(randomProductNumber))).Click();
             Thread.Sleep(1000);
             driver.SwitchTo().Window(driver.WindowHandles.Last());
             Thread.Sleep(1000);
-            driver.FindElement(By.ClassName("add-to-basket")).Click();
+            driver.FindElement(By.ClassName(Utility.AddToBasket)).Click();
             Thread.Sleep(2000);
-            driver.FindElement(By.ClassName("account-basket")).Click();
+            driver.FindElement(By.ClassName(Utility.AccountBasket)).Click();
             Thread.Sleep(1000);
-            driver.FindElement(By.ClassName("i-trash")).Click();
+            driver.FindElement(By.ClassName(Utility.ITrash)).Click();
             Thread.Sleep(1000);
-            driver.FindElement(By.XPath("//button[text()='Sil']")).Click();
+            driver.FindElement(By.XPath(Utility.RemoveXPath)).Click();
 
             //bdd
         }
@@ -52,10 +52,4 @@ namespace Selenium.WebDriverTest
             return strArr[random.Next(strArr.Length)];
         }
     }
-}
-
-public static class Utility
-{
-    public const string ModalClose = "modal-close";
-    public const string SearchBox = "search-box";
 }
